@@ -1,16 +1,14 @@
 package com.example.test_spring.Feed.model;
 
-import com.example.test_spring.Likes.model.Likes;
 import com.example.test_spring.User.model.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
+
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
