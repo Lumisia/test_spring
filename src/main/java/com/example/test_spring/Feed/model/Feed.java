@@ -1,5 +1,6 @@
 package com.example.test_spring.Feed.model;
 
+import com.example.test_spring.Likes.model.Likes;
 import com.example.test_spring.User.model.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -33,20 +34,25 @@ public class Feed {
 
     @ManyToOne
     @JoinColumn(name = "likes")
-    private int likes;
+    private Likes likes;
 
     @PrePersist
     public void prePersist() {
         this.createdAt = LocalDateTime.now();
         this.updatedAt = createdAt;
-        likes = 0;
-    }
-
-    public void setUpdatedAt() {
-        this.updatedAt = LocalDateTime.now();
+        this.likes = Likes.builder()
+                .likes(0)
+                .build();
     }
 
     public void setLikes() {
-        this.likes++;
+        likes = Likes.builder()
+                .likes(this.likes.getLikes() + 1)
+                .build();
+    }
+
+    public void update(FeedDto.ReqFeed dto) {
+        this.contents = dto.getContents();
+        this.updatedAt = LocalDateTime.now();
     }
 }

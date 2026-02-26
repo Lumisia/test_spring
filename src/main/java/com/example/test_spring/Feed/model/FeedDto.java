@@ -1,5 +1,6 @@
 package com.example.test_spring.Feed.model;
 
+import com.example.test_spring.Likes.model.Likes;
 import com.example.test_spring.User.model.User;
 import lombok.Builder;
 import lombok.Getter;
@@ -33,7 +34,7 @@ public class FeedDto {
         private String user;
         private String contents;
         private LocalDateTime updatedAt;
-        private Integer likes;
+        private Likes likes;
 
         public static ResList form(Feed entity) {
             return ResList.builder()
@@ -52,7 +53,7 @@ public class FeedDto {
         private String username;
         private String contents;
         private LocalDateTime updatedAt;
-        private Integer likes;
+        private Likes likes;
 
         public static ResFeed form(Feed entity) {
             return ResFeed.builder()
