@@ -14,14 +14,22 @@ public class FeedService {
 
     public void write(FeedDto.ReqFeed dto) {
 
+        Feed write = dto.toEntity();
+        fr.save(write);
     }
     public List<FeedDto.ResList> list() {
 
+        List<Feed> feedList = fr.findAll();
+
+        return feedList.stream().map(FeedDto.ResList::form).toList();
     }
 
     public FeedDto.ResFeed read(Long idx) {
 
-        Feed feed = fr.
+        Feed feed = fr.findById(idx).orElseThrow(
+                () -> new RuntimeException("글이 없습니다.")
+        );
 
+        return FeedDto.ResFeed.form(feed);
     }
 }

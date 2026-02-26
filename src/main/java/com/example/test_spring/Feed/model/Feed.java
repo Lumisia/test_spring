@@ -41,6 +41,7 @@ public class Feed {
         this.updatedAt = createdAt;
         likes = 0;
     }
+
     public void setUpdatedAt() {
         this.updatedAt = LocalDateTime.now();
     }
