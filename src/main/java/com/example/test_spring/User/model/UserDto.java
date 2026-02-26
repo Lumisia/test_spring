@@ -25,7 +25,7 @@ public class UserDto {
         private String email;
         private String name;
 
-        public ResSignup form(User entity) {
+        public static ResSignup form(User entity) {
             return ResSignup.builder()
                     .email(entity.getEmail())
                     .name(entity.getName())
@@ -37,13 +37,6 @@ public class UserDto {
     public static class ReqLogin {
         private String email;
         private String password;
-
-        public User toEntity() {
-            return User.builder()
-                    .email(this.email)
-                    .password(this.password)
-                    .build();
-        }
     }
 
     @Getter
@@ -51,7 +44,7 @@ public class UserDto {
     public static class ResLogin {
         private String name;
 
-        public ResLogin form(User entity) {
+        public static ResLogin form(User entity) {
             return ResLogin.builder()
                     .name(entity.getName())
                     .build();
