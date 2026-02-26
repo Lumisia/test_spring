@@ -42,10 +42,12 @@ public class UserDto {
     @Getter
     @Builder
     public static class ResLogin {
+        private Long idx;
         private String name;
 
         public static ResLogin form(User entity) {
             return ResLogin.builder()
+                    .idx(entity.getIdx())
                     .name(entity.getName())
                     .build();
         }

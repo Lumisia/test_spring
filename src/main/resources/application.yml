@@ -1,21 +1,23 @@
+jwt:
+  key: ${JWT_KEY}
+  expire: ${JWT_EXPIRE}
+
 spring:
   application:
     name: test_spring
+
   datasource:
     driver-class-name: ${DB_SERVER}
     url: ${DB_URL}
     username: ${DB_ID}
     password: ${DB_PASS}
-  jap:
-    # 4. ?????? ??
-    hibernate:
-      ddl-auto: update # ?? ????? update, ?? ????? none ?? validate ??
 
-    # 5. SQL ?? ?? ?? (????)
+  jpa:
+    hibernate:
+      ddl-auto: update
     show-sql: true
     properties:
       hibernate:
         format_sql: true
-        # MariaDB ?? ??(Dialect) ?? (?? ??? ?? ????? ???? ???)
         dialect: org.hibernate.dialect.MariaDBDialect
 
