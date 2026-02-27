@@ -22,12 +22,13 @@ public class FeedController {
     @PostMapping("/write")
     public ResponseEntity write(
             @AuthenticationPrincipal AuthUserDetails user,
-            @RequestBody FeedDto.ReqFeed dto) {
+            @ModelAttribute FeedDto.ReqFeed dto) {
 
-        String username = user.getUsername();
-        System.out.println(username);
+        String email = user.getEmail();
+        System.out.println(email);
+        System.out.println(dto.getContents());
 
-        User writer = ur.findByUsername(username).orElseThrow(
+        User writer = ur.findByEmail(email).orElseThrow(
                 () -> new RuntimeException("사용자를 찾을수 없습니다.")
         );
         dto.setUser(writer);

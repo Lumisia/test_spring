@@ -14,7 +14,7 @@ public class User {
     private Long idx;
     @Column(nullable = false)
     private String email;
-    private String name;
+    private String username;
     @Setter
     private String password;
 }

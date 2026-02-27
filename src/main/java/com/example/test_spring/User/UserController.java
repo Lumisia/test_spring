@@ -50,7 +50,7 @@ public class UserController {
             UserDto.ResLogin result = UserDto.ResLogin.form(
                     User.builder()
                             .idx(user.getIdx())
-                            .name(user.getUsername())
+                            .username(user.getUsername())
                             .build()
             );
 

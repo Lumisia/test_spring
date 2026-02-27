@@ -8,13 +8,13 @@ public class UserDto {
     @Getter
     public static class ReqSignup {
         private String email;
-        private String name;
+        private String username;
         private String password;
 
         public User toEntity() {
             return User.builder()
                     .email(this.email)
-                    .name(this.name)
+                    .username(this.username)
                     .password(this.password)
                     .build();
         }
@@ -23,12 +23,12 @@ public class UserDto {
     @Builder
     public static class ResSignup {
         private String email;
-        private String name;
+        private String username;
 
         public static ResSignup form(User entity) {
             return ResSignup.builder()
                     .email(entity.getEmail())
-                    .name(entity.getName())
+                    .username(entity.getUsername())
                     .build();
         }
     }
@@ -43,12 +43,12 @@ public class UserDto {
     @Builder
     public static class ResLogin {
         private Long idx;
-        private String name;
+        private String username;
 
         public static ResLogin form(User entity) {
             return ResLogin.builder()
                     .idx(entity.getIdx())
-                    .name(entity.getName())
+                    .username(entity.getUsername())
                     .build();
         }
     }

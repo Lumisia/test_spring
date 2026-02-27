@@ -3,6 +3,7 @@ package com.example.test_spring.Feed.model;
 import com.example.test_spring.User.model.User;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.cglib.core.Local;
 
@@ -11,6 +12,8 @@ import java.time.LocalDateTime;
 public class FeedDto {
 
     @Getter
+    @NoArgsConstructor
+    @Setter
     public static class ReqFeed {
         private Long idx;
         @Setter
@@ -33,12 +36,12 @@ public class FeedDto {
         private String user;
         private String contents;
         private LocalDateTime updatedAt;
-        private Integer likes;
+        private Long likes;
 
         public static ResList form(Feed entity) {
             return ResList.builder()
                     .idx(entity.getIdx())
-                    .user(entity.getUser().getName())
+                    .user(entity.getUser().getUsername())
                     .contents(entity.getContents())
                     .updatedAt(entity.getUpdatedAt())
                     .likes(entity.getLikes())
@@ -52,12 +55,12 @@ public class FeedDto {
         private String username;
         private String contents;
         private LocalDateTime updatedAt;
-        private Integer likes;
+        private Long likes;
 
         public static ResFeed form(Feed entity) {
             return ResFeed.builder()
                     .idx(entity.getIdx())
-                    .username(entity.getUser().getName())
+                    .username(entity.getUser().getUsername())
                     .contents(entity.getContents())
                     .updatedAt(entity.getUpdatedAt())
                     .likes(entity.getLikes())

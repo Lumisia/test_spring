@@ -31,15 +31,13 @@ public class Feed {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    @ManyToOne
-    @JoinColumn(name = "likes")
-    private int likes;
+    private Long likes;
 
     @PrePersist
     public void prePersist() {
         this.createdAt = LocalDateTime.now();
         this.updatedAt = createdAt;
-        likes = 0;
+        likes = 0L;
     }
 
     public void setUpdatedAt() {
