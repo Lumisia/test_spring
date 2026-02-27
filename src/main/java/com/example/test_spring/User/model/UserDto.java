@@ -1,5 +1,6 @@
 package com.example.test_spring.User.model;
 
+import jakarta.validation.constraints.Pattern;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -7,7 +8,9 @@ public class UserDto {
 
     @Getter
     public static class ReqSignup {
+        @Pattern(message = "이메일 형식이 아닙니다.", regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+")
         private String email;
+        @Pattern(message = "한글만 가능합니다.", regexp = "^[가-힣]+$")
         private String username;
         private String password;
 

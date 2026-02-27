@@ -4,11 +4,13 @@ import com.example.test_spring.User.model.AuthUserDetails;
 import com.example.test_spring.User.model.User;
 import com.example.test_spring.User.model.UserDto;
 import com.example.test_spring.Util.JwtUtil;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +27,7 @@ public class UserController {
     private final UserService us;
 
     @PostMapping("/signup")
-    private ResponseEntity signup(@RequestBody UserDto.ReqSignup dto) {
+    private ResponseEntity signup(@Valid @RequestBody UserDto.ReqSignup dto) {
         Optional<UserDto.ResSignup> result = us.save(dto);
 
         if(result.isPresent()) {
