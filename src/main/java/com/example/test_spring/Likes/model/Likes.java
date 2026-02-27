@@ -22,9 +22,9 @@ public class Likes {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "feed_idx")
-    private Long feed;
+    private Feed feed;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_idx")
-    private Long user;
+    private User user;
 }

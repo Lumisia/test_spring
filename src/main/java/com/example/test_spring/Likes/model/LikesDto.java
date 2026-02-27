@@ -9,26 +9,26 @@ public class LikesDto {
 
     @Getter
     public static class ReqLikes {
-        private Long feed_idx;
-        private Long user_idx;
+        private Feed feed;
+        private User user;
 
         public Likes toEntity() {
             return Likes.builder()
-                    .feed(this.feed_idx)
-                    .user(this.user_idx)
+                    .feed(this.feed)
+                    .user(this.user)
                     .build();
         }
     }
     @Builder
     @Getter
     public static class ResLikes {
-        private Long feed_idx;
-        private Long user_idx;
+        private Feed feed;
+        private User user;
 
         public static ResLikes form(Likes entity) {
             return ResLikes.builder()
-                    .feed_idx(entity.getFeed())
-                    .user_idx(entity.getUser())
+                    .feed(entity.getFeed())
+                    .user(entity.getUser())
                     .build();
         }
     }

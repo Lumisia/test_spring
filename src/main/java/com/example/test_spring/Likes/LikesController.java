@@ -26,7 +26,7 @@ public class LikesController {
             @AuthenticationPrincipal AuthUserDetails user,
             @RequestBody LikesDto.ReqLikes dto) {
 
-        Long user_idx = dto.getUser_idx();
+        Long user_idx = dto.getUser().getIdx();
         System.out.println(user_idx);
 
         User real_user = ur.findById(user_idx).orElseThrow(
@@ -45,7 +45,11 @@ public class LikesController {
     public ResponseEntity<List<FeedDto.ResList>>loadLikes(
             @AuthenticationPrincipal AuthUserDetails user) {
 
-        List<FeedDto.ResList> result = ls.find(user.getIdx());
+        User writer = ur.findByEmail(user.getEmail()).orElseThrow(
+                () -> new RuntimeException("사용자를 찾을수 없습니다.")
+        );
+
+        List<FeedDto.ResList> result = ls.find(writer);
 
         return ResponseEntity.ok(result);
     }
